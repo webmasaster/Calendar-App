@@ -1,16 +1,109 @@
-# React + Vite
+# 📅 Wall Calendar App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, interactive wall calendar built using **React + TailwindCSS + Framer Motion**.  
+This project focuses on combining **aesthetic design with real-world usability**, inspired by physical wall calendars.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+### 🖼️ Wall Calendar Aesthetic
+- Large dynamic hero image for each month
+- Image changes based on **month + day**
+- Smooth transition animations (Framer Motion)
+- Overlay, grain, and lighting effects for premium UI
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+### 📅 Day Range Selection
+- Click & drag to select date ranges
+- Visual states:
+  - Start date
+  - End date
+  - Range highlight
+- Fully works on:
+  - Desktop (mouse)
+  - Mobile (touch gestures)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+### 📝 Notes System
+- Add notes for:
+  - Single day
+  - Month
+  - Selected date range
+- Dynamic textarea resizing based on UI
+- Clean UX with placeholders
+
+---
+
+### 🎉 Events System
+- Add events with emojis
+- Delete events easily
+- Event indicators visible on calendar
+
+---
+
+### 🎯 Holiday Integration
+- Built-in Indian public holidays
+- Highlighted with:
+  - Red color
+  - Glow dot indicator
+- Holiday banner inside notes panel
+
+---
+
+### 🎨 Dynamic Theme System
+- Theme color changes per month
+- Selected dates use theme color
+- Today highlight uses theme ring
+- Image + color sync for cohesive UI
+
+---
+
+### 🔄 Flip Animation
+- Month transitions with 3D flip effect
+- Smooth navigation experience
+
+---
+
+### 📱 Fully Responsive
+- Desktop → Side-by-side layout
+- Mobile → Stacked layout
+- Notes panel moves below calendar on mobile
+- Touch-friendly interactions
+
+---
+
+## 🧠 Tech Stack
+
+- **React**
+- **Tailwind CSS**
+- **Framer Motion**
+- **date-fns**
+
+---
+
+## 📂 Project Structure
+src/
+├── components/
+│ ├── CalendarWidget.jsx
+│ ├── HeroSection.jsx
+│ ├── MonthNavigation.jsx
+│ ├── DateGrid.jsx
+│ ├── NotesPanel.jsx
+│
+├── hooks/
+│ └── useCalendar.js
+│
+├── utils/
+│ └── dateUtils.js
+
+
+---
+
+## 🚀 Getting Started
+
+```bash
+npm install
+npm run dev
