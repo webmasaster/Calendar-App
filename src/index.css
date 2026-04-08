@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+html, body, .bg {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  /* Light base color for the wall */
+  /* @apply bg-zinc-200; 
+  background: #d6d6d6; base wall color */
+  
+  /* soft light falloff */
+  background: radial-gradient(
+    circle at 50% 30%,
+    #f5f5f5 0%,
+    #e5e5e5 50%,
+    #d6d6d6 100%
+  );
+  /* High-quality, bright white plaster/stucco wall texture */
+  /* background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'); */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  /* Softens the image slightly so it isn't distracting */
+  background-blend-mode: luminosity;
+}
+* {
+  -webkit-tap-highlight-color: transparent;
+}

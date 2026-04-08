@@ -1,0 +1,20 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer Card -->
+  <rect x="4" y="6" width="40" height="36" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="2"/>
+
+  <!-- Top Header -->
+  <rect x="4" y="6" width="40" height="10" rx="8" fill="#6366f1"/>
+
+  <!-- Binding Rings -->
+  <circle cx="14" cy="6" r="2" fill="#6366f1"/>
+  <circle cx="34" cy="6" r="2" fill="#6366f1"/>
+
+  <!-- Grid Dots -->
+  <circle cx="14" cy="22" r="2" fill="#9ca3af"/>
+  <circle cx="24" cy="22" r="2" fill="#9ca3af"/>
+  <circle cx="34" cy="22" r="2" fill="#9ca3af"/>
+
+  <circle cx="14" cy="30" r="2" fill="#9ca3af"/>
+  <circle cx="24" cy="30" r="2" fill="#6366f1"/> <!-- Highlighted day -->
+  <circle cx="34" cy="30" r="2" fill="#9ca3af"/>
+</svg>
