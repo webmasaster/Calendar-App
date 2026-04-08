@@ -5,7 +5,7 @@ This project focuses on combining **aesthetic design with real-world usability**
 
 ---
 
-🌐 Live Demo: https://vercel.com/nitin-kumars-projects-26d32c5b/calendar-app
+🌐 Live Demo: https://calendar-app-woad-five.vercel.app/
 
 ## ✨ Features
 
