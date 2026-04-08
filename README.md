@@ -5,6 +5,8 @@ This project focuses on combining **aesthetic design with real-world usability**
 
 ---
 
+🌐 Live Demo: https://vercel.com/nitin-kumars-projects-26d32c5b/calendar-app
+
 ## ✨ Features
 
 ### 🖼️ Wall Calendar Aesthetic
@@ -49,7 +51,7 @@ This project focuses on combining **aesthetic design with real-world usability**
 - Highlighted with:
   - Red color
   - Glow dot indicator
-- Holiday banner inside notes panel
+- Holiday banner panel
 
 ---
 
