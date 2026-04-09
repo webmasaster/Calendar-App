@@ -13,34 +13,41 @@ export const useCalendar = () => {
   const [isDragging, setIsDragging] = useState(false);
   
   const [selectedNoteDate, setSelectedNoteDate] = useState(new Date(2018, 0, 5)); 
-  const [notes, setNotes] = useState([]);
+  
+  // ✅ FIXED: Load from localStorage BEFORE first render
+  const [notes, setNotes] = useState(() => {
+    try {
+      const saved = localStorage.getItem('calendar_notes');
+      if (!saved) return [];
+
+      const parsed = JSON.parse(saved);
+
+      // Migration support (old object format → array)
+      if (!Array.isArray(parsed) && typeof parsed === 'object') {
+        return Object.entries(parsed).map(([dateKey, text]) => ({
+          id: Math.random().toString(36).substr(2, 9),
+          dateKey,
+          text,
+          isEvent: false,
+          emoji: '📌'
+        }));
+      }
+
+      return parsed;
+    } catch {
+      return [];
+    }
+  });
+
   const [holidays, setHolidays] = useState({});
 
+  // 🎉 Load holidays when month changes
   useEffect(() => {
     const year = getYear(currentMonth);
     setHolidays(getFallbackHolidays(year));
   }, [currentMonth]);
 
-  useEffect(() => {
-    try {
-      const savedNotes = localStorage.getItem('calendar_notes');
-      if (savedNotes) {
-        const parsed = JSON.parse(savedNotes);
-        if (!Array.isArray(parsed) && typeof parsed === 'object') {
-          const migrated = Object.entries(parsed).map(([dateKey, text]) => ({
-            id: Math.random().toString(36).substr(2, 9),
-            dateKey, text, isEvent: false, emoji: '📌'
-          }));
-          setNotes(migrated);
-        } else {
-          setNotes(parsed || []);
-        }
-      }
-    } catch (e) {
-      localStorage.removeItem('calendar_notes');
-    }
-  }, []);
-
+  // 💾 Save notes to localStorage whenever notes change
   useEffect(() => {
     localStorage.setItem('calendar_notes', JSON.stringify(notes));
   }, [notes]);
@@ -59,13 +66,20 @@ export const useCalendar = () => {
   };
 
   const nextMonth = () => { 
-    setDirection(1); setCurrentMonth(addMonths(currentMonth, 1)); setSelectedNoteDate(null); 
+    setDirection(1); 
+    setCurrentMonth(addMonths(currentMonth, 1)); 
+    setSelectedNoteDate(null); 
   };
+
   const prevMonth = () => { 
-    setDirection(-1); setCurrentMonth(subMonths(currentMonth, 1)); setSelectedNoteDate(null); 
+    setDirection(-1); 
+    setCurrentMonth(subMonths(currentMonth, 1)); 
+    setSelectedNoteDate(null); 
   };
+
   const handleYearChange = (year) => {
-    setCurrentMonth(setYear(currentMonth, year)); setSelectedNoteDate(null); 
+    setCurrentMonth(setYear(currentMonth, year)); 
+    setSelectedNoteDate(null); 
   };
 
   const handleMonthSelect = (monthIndex) => {
@@ -75,29 +89,48 @@ export const useCalendar = () => {
   };
 
   const handleMouseDown = (day) => {
-    setIsDragging(true); setStartDate(day); setEndDate(null); setSelectedNoteDate(day); 
+    setIsDragging(true); 
+    setStartDate(day); 
+    setEndDate(null); 
+    setSelectedNoteDate(day); 
   };
-  const handleMouseEnterDrag = (day) => { if (isDragging) setHoverDate(day); };
+
+  const handleMouseEnterDrag = (day) => { 
+    if (isDragging) setHoverDate(day); 
+  };
+
   const handleMouseUp = (day) => {
     if (isDragging) {
       setIsDragging(false);
       if (startDate && isBefore(day, startDate)) {
-        setEndDate(startDate); setStartDate(day);
+        setEndDate(startDate); 
+        setStartDate(day);
       } else {
         setEndDate(day);
       }
     }
   };
 
-  const clearRange = () => { setStartDate(null); setEndDate(null); };
+  const clearRange = () => { 
+    setStartDate(null); 
+    setEndDate(null); 
+  };
 
   const handleAddNote = (dateKey, text, isEvent = false, emoji = '📌') => {
-    const newNote = { id: Date.now().toString(), dateKey, text, isEvent, emoji };
+    const newNote = { 
+      id: Date.now().toString(), 
+      dateKey, 
+      text, 
+      isEvent, 
+      emoji 
+    };
     setNotes(prev => [newNote, ...prev]);
   };
 
   const handleUpdateNote = (id, text) => {
-    setNotes(prev => prev.map(note => note.id === id ? { ...note, text } : note));
+    setNotes(prev => 
+      prev.map(note => note.id === id ? { ...note, text } : note)
+    );
   };
 
   const handleDeleteNote = (id) => {
@@ -105,12 +138,15 @@ export const useCalendar = () => {
   };
 
   const handleMoveNote = (id, newDateKey) => {
-    setNotes(prev => prev.map(note => note.id === id ? { ...note, dateKey: newDateKey } : note));
+    setNotes(prev => 
+      prev.map(note => note.id === id ? { ...note, dateKey: newDateKey } : note)
+    );
   };
 
   return {
     currentMonth, direction, startDate, endDate, hoverDate, notes,
-    selectedNoteDate, setSelectedNoteDate, handleAddNote, handleUpdateNote, handleDeleteNote, handleMoveNote,
+    selectedNoteDate, setSelectedNoteDate,
+    handleAddNote, handleUpdateNote, handleDeleteNote, handleMoveNote,
     theme, nextMonth, prevMonth, handleYearChange, holidays,
     handleMouseDown, handleMouseEnterDrag, handleMouseUp, clearRange,
     showYearView, setShowYearView, handleMonthSelect
