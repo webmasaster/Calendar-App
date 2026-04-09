@@ -3,7 +3,13 @@ import { addMonths, subMonths, isBefore, getYear, setYear, setMonth } from 'date
 import { monthColors, monthThemes, getFallbackHolidays } from '../utils/dateUtils';
 
 export const useCalendar = () => {
-  const [currentMonth, setCurrentMonth] = useState(new Date(2018, 0, 1)); 
+  const today = new Date();
+
+const [currentMonth, setCurrentMonth] = useState(
+  new Date(today.getFullYear(), today.getMonth(), 1)
+);
+
+const [selectedNoteDate, setSelectedNoteDate] = useState(today);
   const [direction, setDirection] = useState(0); 
   const [showYearView, setShowYearView] = useState(false);
   
@@ -12,7 +18,7 @@ export const useCalendar = () => {
   const [hoverDate, setHoverDate] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   
-  const [selectedNoteDate, setSelectedNoteDate] = useState(new Date(2018, 0, 5)); 
+  // const [selectedNoteDate, setSelectedNoteDate] = useState(new Date(2018, 0, 5)); 
   
   // ✅ FIXED: Load from localStorage BEFORE first render
   const [notes, setNotes] = useState(() => {
