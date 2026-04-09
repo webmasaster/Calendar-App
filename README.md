@@ -1,111 +1,170 @@
-# 📅 Wall Calendar App
+# 📅 Modern Calendar App
 
-A modern, interactive wall calendar built using **React + TailwindCSS + Framer Motion**.  
-This project focuses on combining **aesthetic design with real-world usability**, inspired by physical wall calendars.
+A beautifully designed and interactive calendar application built with React.  
+It supports note-taking, event management, drag-and-drop functionality, range selection, and dynamic themes.
 
 ---
 
-🌐 Live Demo: https://calendar-app-woad-five.vercel.app/
+## 🔗 Links
+
+- 🚀 **Live Demo:** https://calendar-app-woad-five.vercel.app/  
+- 💻 **GitHub Repository:** https://github.com/webmasaster/Calendar-App  
+
+---
 
 ## ✨ Features
 
-### 🖼️ Wall Calendar Aesthetic
-- Large dynamic hero image for each month
-- Image changes based on **month + day**
-- Smooth transition animations (Framer Motion)
-- Overlay, grain, and lighting effects for premium UI
+### 🗓️ Calendar Views
+- Monthly calendar grid with smooth animations  
+- Year overview (12-month quick selection)  
+- Swipe & click navigation between months  
+- Dynamic weekday alignment (Mon–Sun)
 
 ---
 
-### 📅 Day Range Selection
-- Click & drag to select date ranges
-- Visual states:
-  - Start date
-  - End date
-  - Range highlight
-- Fully works on:
-  - Desktop (mouse)
-  - Mobile (touch gestures)
-
----
-
-### 📝 Notes System
+### 📝 Notes & Events System
 - Add notes for:
-  - Single day
-  - Month
-  - Selected date range
-- Dynamic textarea resizing based on UI
-- Clean UX with placeholders
+  - Single date  
+  - Date range  
+  - Entire month  
+- Edit and delete notes via modal interface  
+- Mark notes as **events with emojis** (🎉, 📌, ✈️, etc.)  
+- View saved notes in a structured panel  
+- Notes persist using **localStorage**
 
 ---
 
-### 🎉 Events System
-- Add events with emojis
-- Delete events easily
-- Event indicators visible on calendar
+### 🔁 Drag & Drop (Advanced Feature)
+- Drag notes from the notes panel  
+- Drop onto any date to reschedule  
+- Automatically updates note date  
+- Improves usability and workflow  
 
 ---
 
-### 🎯 Holiday Integration
-- Built-in Indian public holidays
-- Highlighted with:
-  - Red color
-  - Glow dot indicator
-- Holiday banner panel
+### 📆 Date Range Selection
+- Click & drag across dates to create a range  
+- Highlighted UI for selected range  
+- Add notes specifically for selected ranges  
 
 ---
 
-### 🎨 Dynamic Theme System
-- Theme color changes per month
-- Selected dates use theme color
-- Today highlight uses theme ring
-- Image + color sync for cohesive UI
+### 🎨 Dynamic Themes
+- Month-based background images  
+- Theme changes dynamically based on:
+  - Current month  
+  - Selected date  
+- Smooth animated transitions  
 
 ---
 
-### 🔄 Flip Animation
-- Month transitions with 3D flip effect
-- Smooth navigation experience
+### 🎉 Holidays (India Support)
+- Built-in fallback holiday system  
+- Highlights holidays directly on calendar  
+- Displays holiday name 
 
 ---
 
-### 📱 Fully Responsive
-- Desktop → Side-by-side layout
-- Mobile → Stacked layout
-- Notes panel moves below calendar on mobile
-- Touch-friendly interactions
+### 📱 Responsive & Interactive UI
+- Fully responsive design (mobile + desktop)  
+- Smooth animations using **Framer Motion**  
+- Clean modern UI with Tailwind CSS  
+- Touch support for mobile devices  
 
 ---
 
-## 🧠 Tech Stack
+### ⚙️ State Management
+- Custom hook: `useCalendar`  
+- Handles:
+  - Month navigation  
+  - Notes CRUD  
+  - Drag interactions  
+  - Theme logic  
+  - Holiday data  
 
-- **React**
+---
+
+## 🏗️ Tech Stack
+
+- **React (Vite)**
 - **Tailwind CSS**
 - **Framer Motion**
 - **date-fns**
+- **Lucide React Icons**
 
 ---
 
 ## 📂 Project Structure
-src/
-├── components/
-│ ├── CalendarWidget.jsx
-│ ├── HeroSection.jsx
-│ ├── MonthNavigation.jsx
-│ ├── DateGrid.jsx
-│ ├── NotesPanel.jsx
-│
-├── hooks/
-│ └── useCalendar.js
-│
-├── utils/
-│ └── dateUtils.js
+
+```
+
+├── src
+│   ├── App.jsx
+│   ├── components
+│   │   ├── CalendarWidget.jsx
+│   │   ├── DateGrid.jsx
+│   │   ├── HeroSection.jsx
+│   │   ├── MonthNavigation.jsx
+│   │   ├── NotesPanel.jsx
+│   │   └── useCalendar.jsx
+│   └── utils
+│       ├── dateUtils.js
+│       └── themeUtils.js
+
+
+```
 
 
 ---
 
 ## 🚀 Getting Started
 
+### 1️⃣ Clone the repository
 ```bash
+git clone https://github.com/webmasaster/Calendar-App.git
+```
+
+### 2️⃣ Install dependencies
+```bash
+cd Calendar-App
 npm install
+```
+
+### 3️⃣ Run the development server
+```bash 
 npm run dev
+
+```
+
+### 4️⃣ Open the app in your browser
+```bash
+http://localhost:5173
+```
+
+---
+
+
+## 🧠 Design Decisions
+
+### 🔧 Custom Hook (`useCalendar`)
+Centralized logic → cleaner components and better scalability  
+
+### 💾 LocalStorage Persistence
+No backend needed → fast and simple  
+
+### 🔁 Drag & Drop UX
+More intuitive than traditional editing  
+
+### 🗂️ Flexible Date Keys
+- Single day → `yyyy-MM-dd`  
+- Range → `start_end`  
+- Month → `yyyy-MM`  
+
+### 🎨 Dynamic Theme Engine
+Enhances UI experience with visual changes  
+
+---
+
+## 👨‍💻 Author
+
+**Nitin Kumar**
